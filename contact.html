@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="contactPageTitle">Contact Us & Help - Outline VPN Lunas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="unified-styles.css">
+    
+    <!-- Localization Scripts -->
+    <script src="translations.js"></script>
+    <script src="localization.js"></script>
+</head>
+<body class="bg-gray-900 text-slate-300">
+
+    <!-- Enhanced Header with mobile menu -->
+    <header class="bg-gray-900/90 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-700/30">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-white">
+                    <span class="text-orange-500">Outline</span>VPN
+                    <span class="inline-block w-2 h-2 bg-green-400 rounded-full ml-2 pulse-dot"></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html#features" class="text-slate-300 hover:text-orange-400 transition-colors font-medium" data-lang-key="navFeatures">Features</a>
+                    <a href="index.html#pricing" class="text-slate-300 hover:text-orange-400 transition-colors font-medium" data-lang-key="navPricing">Pricing</a>
+                    <a href="index.html#faq" class="text-slate-300 hover:text-orange-400 transition-colors font-medium" data-lang-key="navFAQ">FAQ</a>
+                    <a href="legal.html" class="text-slate-300 hover:text-orange-400 transition-colors font-medium" data-lang-key="navLegal">Legal</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="index.html#pricing" class="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold py-2 px-6 rounded-full cta-button hidden sm:block" data-lang-key="navStartNow">Get Started</a>
+                    <button class="lg:hidden p-2 text-white" onclick="toggleMobileMenu()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="slide-out-menu fixed top-0 right-0 h-full w-64 bg-gray-800/95 backdrop-blur-lg p-6 md:hidden">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold text-white">
+                    <span class="text-orange-500">Outline</span>VPN
+                </span>
+                <button onclick="toggleMobileMenu()" class="text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav class="space-y-6">
+                <a href="index.html#features" class="block text-xl text-slate-300 hover:text-orange-400" onclick="toggleMobileMenu()" data-lang-key="navFeatures">Features</a>
+                <a href="index.html#pricing" class="block text-xl text-slate-300 hover:text-orange-400" onclick="toggleMobileMenu()" data-lang-key="navPricing">Pricing</a>
+                <a href="index.html#faq" class="block text-xl text-slate-300 hover:text-orange-400" onclick="toggleMobileMenu()" data-lang-key="navFAQ">FAQ</a>
+                <a href="legal.html" class="block text-xl text-slate-300 hover:text-orange-400" onclick="toggleMobileMenu()" data-lang-key="navLegal">Legal</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <main class="py-20 md:py-32 hero-gradient">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white" data-lang-key="contactTitle">Need Help?</h1>
+                <p class="text-slate-300 mt-4 text-lg leading-relaxed" data-lang-key="contactSubtitle">We're here to help! Please use the channels below for any questions, technical issues, or feedback.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto glass-card rounded-2xl p-8 md:p-12 mt-16 border border-orange-500/20">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-white mb-2" data-lang-key="contactMainChannel">Main Support Channel</h2>
+                    <p class="text-slate-400 mb-6" data-lang-key="contactShopeeNote">For the fastest response, please contact us directly through Shopee.</p>
+                    <a href="https://shopee.com.my" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold py-3 px-8 rounded-full cta-button inline-flex items-center space-x-2">
+                        <span data-lang-key="contactShopeeButton">Chat Us on Shopee</span>
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+                <div class="text-center mt-10 border-t border-gray-700/50 pt-8">
+                     <h2 class="text-2xl font-bold text-white mb-2" data-lang-key="contactEmail">Email</h2>
+                     <p class="text-slate-400 mb-4" data-lang-key="contactEmailNote">You can also send us an email. We will reply within 24 hours.</p>
+                     <a href="mailto:sokongan@outlinevpn-lunas.com" class="text-orange-400 hover:text-orange-300 text-lg font-semibold transition-colors">
+                        sokongan@outlinevpn-lunas.com
+                     </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">
+                        <span class="text-orange-500">Outline</span>VPN
+                    </h3>
+                    <p class="text-slate-400 mb-4" data-lang-key="footerBrandDesc">Premium VPN service for Malaysia with blazing fast speeds and military-grade security.</p>
+                </div>
+                
+                <!-- Products -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4" data-lang-key="footerProduct">Product</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="index.html#features" class="hover:text-orange-400 transition-colors" data-lang-key="navFeatures">Features</a></li>
+                        <li><a href="index.html#pricing" class="hover:text-orange-400 transition-colors" data-lang-key="navPricing">Pricing</a></li>
+                        <li><a href="https://fisamy.rhinopal.top/" class="hover:text-orange-400 transition-colors" data-lang-key="navRedeem">Redeem Key</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4" data-lang-key="footerSupport">Support</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="contact.html" class="hover:text-orange-400 transition-colors" data-lang-key="contactTitle">Contact Us</a></li>
+                        <li><a href="index.html#faq" class="hover:text-orange-400 transition-colors" data-lang-key="navFAQ">FAQ</a></li>
+                        <li><a href="https://shopee.com.my" target="_blank" class="hover:text-orange-400 transition-colors" data-lang-key="footerShopee">Shopee Store</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4" data-lang-key="footerLegal">Legal</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="legal.html" class="hover:text-orange-400 transition-colors" data-lang-key="footerTerms">Terms of Service</a></li>
+                        <li><a href="legal.html" class="hover:text-orange-400 transition-colors" data-lang-key="footerPrivacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-slate-500">
+                <p data-lang-key="footerCopyright">&copy; 2025 Outline VPN Services. All Rights Reserved.</p>
+                <p class="text-sm mt-2" data-lang-key="footerLegalNote">Please use our services responsibly and comply with Malaysian laws.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality is now handled by localization.js
+        // No duplicate code needed here
+    </script>
+</body>
+</html>

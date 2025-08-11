@@ -1,0 +1,445 @@
+/* CSS Custom Properties for consistent theming */
+:root {
+  /* Colors */
+  --color-primary: #f97316;
+  --color-primary-dark: #ea580c;
+  --color-primary-light: #fb923c;
+  --color-secondary: #1e3a8a;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+  
+  /* Background colors */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: rgba(31, 41, 55, 0.8);
+  --bg-card-light: rgba(17, 24, 39, 0.6);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-accent: #f97316;
+  
+  /* Border colors */
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --border-accent: #f97316;
+  
+  /* Fonts */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Enhanced gradient backgrounds */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, #475569 75%, #64748b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Animated elements */
+.cta-button {
+  transition: all var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+}
+
+/* Glassmorphism effect */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism {
+  background: var(--bg-card-light);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Pulse animation for status indicators */
+.pulse-dot {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Enhanced mobile menu */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal) ease;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.slide-out-menu {
+  transform: translateX(100%);
+  transition: transform var(--transition-normal) ease-in-out;
+}
+
+.slide-out-menu.is-open {
+  transform: translateX(0);
+}
+
+/* Animated gradients */
+.animated-gradient {
+  background: linear-gradient(-45deg, var(--color-primary), var(--color-secondary), var(--color-success), var(--color-warning));
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Glow effects */
+.glow-badge {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px var(--color-success), 0 0 10px var(--color-success); }
+  to { box-shadow: 0 0 20px var(--color-success), 0 0 30px var(--color-success); }
+}
+
+/* Gradient buttons */
+.gradient-button {
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+}
+
+/* Border animations */
+.border-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary));
+  animation: border-anim 2s linear infinite;
+}
+
+@keyframes border-anim {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Gradient text */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Feature card animations */
+.feature-card-animated {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-slow) ease, transform var(--transition-slow) ease;
+}
+
+.feature-card-animated.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card {
+  transition: all var(--transition-normal) ease;
+  border: 1px solid var(--border-secondary);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  border-image: linear-gradient(to right, var(--color-primary), var(--color-primary-dark)) 1;
+}
+
+/* Pulse badge */
+.pulse-badge {
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* FAQ styles */
+.faq-item summary::-webkit-details-marker { 
+  display: none; 
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-item .icon {
+  transition: transform var(--transition-normal) ease;
+}
+
+.faq-item[open] .icon {
+  transform: rotate(45deg);
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progress steps */
+.progress-step {
+  transition: all var(--transition-normal) ease;
+}
+
+.progress-step.active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.progress-step.active .step-circle {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.progress-line {
+  transition: width var(--transition-normal) ease;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Success animation */
+.success-animation {
+  animation: success-pop 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes success-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Slide in animation */
+.slide-in {
+  animation: slide-in-up 0.6s ease-out both;
+}
+
+@keyframes slide-in-up {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom prose styles for legal text */
+.prose h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 2em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid var(--border-secondary);
+  padding-bottom: 0.5em;
+}
+
+.prose h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose p, .prose li {
+  color: var(--text-secondary);
+}
+
+.prose a {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.prose a:hover {
+  color: var(--color-primary);
+}
+
+.prose strong {
+  color: var(--text-primary);
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive utilities */
+@media (max-width: 600px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .links {
+    flex-direction: column;
+  }
+  
+  .mobile-menu {
+    width: 100%;
+  }
+}
+
+/* Status indicators */
+.status-connected {
+  color: var(--color-success);
+  font-weight: bold;
+}
+
+.status-disconnected {
+  color: var(--color-error);
+  font-weight: bold;
+}
+
+.loading {
+  color: var(--text-muted);
+}
+
+/* Button variants */
+.btn {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color var(--transition-normal);
+}
+
+.btn:hover {
+  background: var(--color-primary-dark);
+} 
