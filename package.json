@@ -1,0 +1,14 @@
+{
+  "name": "outline-vpn-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Outline VPN service",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./unified-styles.css --watch",
+    "build:prod": "tailwindcss -i ./src/input.css -o ./unified-styles.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^2.2.19"
+  }
+}

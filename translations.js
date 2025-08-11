@@ -6,6 +6,10 @@ const translations = {
     pageDescription: "Premium Malaysia VPN with AES-256 encryption, no-logs policy, and speeds up to 950 Mbps. Unlimited internet for all your devices.",
     pageKeywords: "VPN Malaysia, Outline VPN, fast internet, secure internet, cheap VPN, no-logs VPN, AES-256, unblock website",
     
+    // Language
+    languageLabel: "Language",
+    languageToggle: "EN / MS",
+    
     // Header
     navFeatures: "Features",
     navSetup: "Setup", 
@@ -16,14 +20,19 @@ const translations = {
     serverOnline: "Server Online",
     
     // Hero Section
-    heroBadge: "Malaysia Server 🇲🇾 • 99.9% Uptime",
-    heroTitle: "Unlimited Internet, Lightning Speed",
-    heroSubtitle: "Premium Malaysia VPN with AES-256 encryption, no-logs policy, and speeds up to 950 Mbps.",
-    heroStartNow: "Get Started Now",
-    heroLearnMore: "Learn More",
+    heroBadge: "🇲🇾 Malaysia Server",
+    heroTitle: "Unlimited Internet,<br><span class=\"gradient-bg bg-clip-text text-transparent\">Lightning Speed</span>",
+    heroSubtitle: "Premium Malaysia VPN with <strong class=\"text-orange-400\">AES-256 encryption</strong>, no-logs policy, and speeds up to <strong class=\"text-green-400\">950 Mbps</strong>.",
+    heroStartNow: "Start Now - Only RM15/month",
+    heroLearnMore: "See Features",
     featureNoLogs: "No-Logs Policy",
     featureEncryption: "AES-256 Encryption", 
-    featureUnlimited: "Unlimited Devices",
+    featureUnlimited: "Instant Activation",
+    
+    // Real-time stats
+    onlineUsers: "users online",
+    serverLoad: "Load",
+    pingTime: "Ping",
     
     // Stats Section
     statsSpeed: "Mbps Speed",
@@ -54,19 +63,19 @@ const translations = {
     step3Desc: "Open the Outline app, click the '+' icon and paste your 'access key'. Press 'Connect' and you're ready to browse the internet safely.",
     
     // Pricing Section
-    pricingTitle: "Packages That Suit You",
-    pricingPopular: "Most Popular Plan",
+    pricingTitle: "Simple, Transparent Pricing",
+    pricingPopular: "Most Popular",
     pricingPlanName: "Premium VPN Access",
     pricingPrice: "RM15",
     pricingPeriod: "/month",
-    pricingFeature1: "Unlimited bandwidth",
-    pricingFeature2: "Malaysia servers",
-    pricingFeature3: "No device limits",
-    pricingFeature4: "24/7 support",
-    pricingShopeeButton: "Buy on Shopee",
+    pricingFeature1: "Unlimited bandwidth & data",
+    pricingFeature2: "Malaysia servers (Low ping)",
+    pricingFeature3: "Connect unlimited devices",
+    pricingFeature4: "24/7 support via Shopee",
+    pricingShopeeButton: "Buy Now on Shopee",
     pricingPaymentNote: "Secure payment and immediate delivery via Shopee Chat.",
-    pricingRedeemLink: "Already bought? Redeem your key here.",
-    pricingCustomers: "Join 1000+ satisfied customers",
+    pricingRedeemLink: "Already bought? Redeem key →",
+    pricingCustomers: "Join 2,847+ satisfied customers",
     
     // FAQ Section
     faqTitle: "Frequently Asked Questions (FAQ)",
@@ -89,7 +98,7 @@ const translations = {
     
     // Footer
     footerBrand: "OutlineVPN",
-    footerBrandDesc: "Fast, secure, and private internet for everyone.",
+    footerBrandDesc: "Fast, secure, and private internet for everyone in Malaysia.",
     footerLinks: "Links",
     footerLegal: "Legal",
     footerTerms: "Terms & Conditions",
@@ -99,11 +108,6 @@ const translations = {
     footerSubscribe: "Subscribe",
     footerCopyright: "© 2025 Outline VPN Services. All Rights Reserved.",
     footerLegalNote: "Please use our services responsibly and comply with Malaysian laws.",
-    
-    // Language Toggle
-    languageToggle: "EN / MS",
-    currentLanguage: "English",
-    languageLabel: "Language",
     
     // Contact Page
     contactPageTitle: "Contact Us & Help - Outline VPN Lunas",
@@ -163,6 +167,10 @@ const translations = {
     pageDescription: "VPN premium Malaysia dengan enkripsi AES-256, polisi no-logs, dan kelajuan sehingga 950 Mbps. Internet tanpa had untuk semua peranti anda.",
     pageKeywords: "VPN Malaysia, Outline VPN, internet laju, internet selamat, VPN murah, no-logs VPN, AES-256, unblock website",
     
+    // Language
+    languageLabel: "Bahasa",
+    languageToggle: "EN / MS",
+    
     // Header
     navFeatures: "Ciri-ciri",
     navSetup: "Setup",
@@ -173,14 +181,19 @@ const translations = {
     serverOnline: "Server Online",
     
     // Hero Section
-    heroBadge: "Server Malaysia 🇲🇾 • 99.9% Uptime",
-    heroTitle: "Internet Tanpa Had, Kelajuan Kilat",
-    heroSubtitle: "VPN premium Malaysia dengan enkripsi AES-256, polisi no-logs, dan kelajuan sehingga 950 Mbps.",
-    heroStartNow: "Mula Sekarang",
-    heroLearnMore: "Pelajari Lebih Lanjut",
+    heroBadge: "🇲🇾 Server Malaysia",
+    heroTitle: "Internet Tanpa Had,<br><span class=\"gradient-bg bg-clip-text text-transparent\">Kelajuan Kilat</span>",
+    heroSubtitle: "VPN premium Malaysia dengan <strong class=\"text-orange-400\">enkripsi AES-256</strong>, polisi no-logs, dan kelajuan sehingga <strong class=\"text-green-400\">950 Mbps</strong>.",
+    heroStartNow: "Mula Sekarang - Hanya RM15/bulan",
+    heroLearnMore: "Lihat Ciri-ciri",
     featureNoLogs: "Dasar Tiada Log",
     featureEncryption: "Penyulitan AES-256",
-    featureUnlimited: "Peranti Tanpa Had",
+    featureUnlimited: "Aktivasi Segera",
+    
+    // Real-time stats
+    onlineUsers: "pengguna dalam talian",
+    serverLoad: "Beban",
+    pingTime: "Ping",
     
     // Stats Section
     statsSpeed: "Mbps Kelajuan",
@@ -211,19 +224,19 @@ const translations = {
     step3Desc: "Buka aplikasi Outline, klik ikon '+' dan tampal 'access key' anda. Tekan 'Connect' dan anda sedia untuk melayari internet dengan selamat.",
     
     // Pricing Section
-    pricingTitle: "Pakej Yang Sesuai Untuk Anda",
-    pricingPopular: "Pelan Paling Popular",
+    pricingTitle: "Harga Mudah & Telus",
+    pricingPopular: "Paling Popular",
     pricingPlanName: "Premium VPN Access",
     pricingPrice: "RM15",
     pricingPeriod: "/bulan",
-    pricingFeature1: "Jalur lebar tanpa had",
-    pricingFeature2: "Server Malaysia",
-    pricingFeature3: "Tiada had peranti",
-    pricingFeature4: "Sokongan 24/7",
-    pricingShopeeButton: "Beli di Shopee",
+    pricingFeature1: "Jalur lebar & data tanpa had",
+    pricingFeature2: "Server Malaysia (Ping rendah)",
+    pricingFeature3: "Sambung peranti tanpa had",
+    pricingFeature4: "Sokongan 24/7 melalui Shopee",
+    pricingShopeeButton: "Beli Sekarang di Shopee",
     pricingPaymentNote: "Pembayaran selamat dan penghantaran segera melalui Shopee Chat.",
-    pricingRedeemLink: "Sudah beli? Tebus kunci anda di sini.",
-    pricingCustomers: "Join 1000+ satisfied customers",
+    pricingRedeemLink: "Sudah beli? Tebus kunci →",
+    pricingCustomers: "Sertai 2,847+ pelanggan berpuas hati",
     
     // FAQ Section
     faqTitle: "Soalan Lazim (FAQ)",
@@ -246,7 +259,7 @@ const translations = {
     
     // Footer
     footerBrand: "OutlineVPN",
-    footerBrandDesc: "Internet pantas, selamat, dan peribadi untuk semua.",
+    footerBrandDesc: "Internet pantas, selamat, dan peribadi untuk semua di Malaysia.",
     footerLinks: "Pautan",
     footerLegal: "Legal",
     footerTerms: "Terma & Syarat",
@@ -256,11 +269,6 @@ const translations = {
     footerSubscribe: "Langgan",
     footerCopyright: "© 2025 Outline VPN Services. Hak Cipta Terpelihara.",
     footerLegalNote: "Sila gunakan perkhidmatan kami secara bertanggungjawab dan patuhi undang-undang Malaysia.",
-    
-    // Language Toggle
-    languageToggle: "EN / MS",
-    currentLanguage: "Bahasa Melayu",
-    languageLabel: "Bahasa",
     
     // Contact Page
     contactPageTitle: "Hubungi Kami & Bantuan - Outline VPN Lunas",

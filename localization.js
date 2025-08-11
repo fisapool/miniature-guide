@@ -157,18 +157,27 @@ class LocalizationManager {
 
   // Add language toggle to desktop navigation
   addLanguageToggleToDesktop() {
-    const header = document.querySelector('header nav');
-    if (header) {
+    // Look for the navigation container in the new header structure
+    const desktopNav = document.querySelector('header .hidden.md\\:flex');
+    if (desktopNav) {
       const languageToggle = document.createElement('button');
       languageToggle.id = 'language-toggle-desktop';
-      languageToggle.className = 'text-slate-300 hover:text-orange-400 transition-colors font-medium ml-4 px-3 py-1 rounded border border-slate-600 hover:border-orange-500';
-      languageToggle.innerHTML = this.getText('languageToggle');
+      languageToggle.className = 'language-toggle';
+      languageToggle.innerHTML = `
+        <svg class="w-4 h-4 language-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.41 12m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0M9 12l-3-3m3 3l3-3m3 3l-3 3"></path>
+        </svg>
+        <span>${this.getText('languageToggle')}</span>
+      `;
       languageToggle.addEventListener('click', () => this.toggleLanguage());
       
-      // Insert after the navigation links
-      const navLinks = header.querySelector('.hidden.md\\:flex');
-      if (navLinks) {
-        navLinks.appendChild(languageToggle);
+      // Insert after the navigation links but before the online users display
+      const onlineUsersDiv = desktopNav.querySelector('.flex.items-center.space-x-2.text-sm');
+      if (onlineUsersDiv) {
+        desktopNav.insertBefore(languageToggle, onlineUsersDiv);
+      } else {
+        // Fallback: append to the end
+        desktopNav.appendChild(languageToggle);
       }
     }
   }
@@ -181,8 +190,16 @@ class LocalizationManager {
     // Create mobile language toggle button
     const mobileLanguageToggle = document.createElement('button');
     mobileLanguageToggle.id = 'language-toggle-mobile';
-    mobileLanguageToggle.className = 'w-full text-left text-slate-300 hover:text-orange-400 transition-colors font-medium py-3 px-4 rounded border border-slate-600 hover:border-orange-500 bg-gray-700/50 hover:bg-gray-600/50';
-    mobileLanguageToggle.innerHTML = `${this.getText('languageLabel')}: ${this.getText('languageToggle')}`;
+    mobileLanguageToggle.className = 'language-toggle-mobile';
+    mobileLanguageToggle.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <svg class="w-5 h-5 text-orange-400 language-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.41 12m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0M9 12l-3-3m3 3l3-3m3 3l-3 3"></path>
+        </svg>
+        <span>${this.getText('languageLabel')}</span>
+      </div>
+      <span class="text-orange-400 font-semibold">${this.getText('languageToggle')}</span>
+    `;
     mobileLanguageToggle.addEventListener('click', () => this.toggleLanguage());
 
     // Determine where to insert the language toggle based on mobile menu structure
@@ -238,42 +255,68 @@ class LocalizationManager {
     const mobileToggle = document.getElementById('language-toggle-mobile');
     
     const toggleText = this.getText('languageToggle');
-    const mobileToggleText = `${this.getText('languageLabel')}: ${this.getText('languageToggle')}`;
+    const languageLabel = this.getText('languageLabel');
     
     if (desktopToggle) {
-      desktopToggle.innerHTML = toggleText;
+      desktopToggle.innerHTML = `
+        <svg class="w-4 h-4 language-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.41 12m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0M9 12l-3-3m3 3l3-3m3 3l-3 3"></path>
+        </svg>
+        <span>${toggleText}</span>
+      `;
     }
     
     if (mobileToggle) {
-      mobileToggle.innerHTML = mobileToggleText;
+      mobileToggle.innerHTML = `
+        <div class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-orange-400 language-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.41 12m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0M9 12l-3-3m3 3l3-3m3 3l-3 3"></path>
+          </svg>
+          <span>${languageLabel}</span>
+        </div>
+        <span class="text-orange-400 font-semibold">${toggleText}</span>
+      `;
     }
   }
 
-  // Show a brief notification when language changes
+  // Show language change notification
   showLanguageNotification() {
-    const langPack = this.translations[this.currentLanguage] || this.translations.en;
-    const message = langPack.currentLanguage || 'Language changed';
-    
-    // Create notification element
+    // Remove existing notification if any
+    const existingNotification = document.getElementById('language-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
     const notification = document.createElement('div');
-    notification.className = 'fixed top-20 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full';
-    notification.innerHTML = `✓ ${message}`;
-    document.body.appendChild(notification);
+    notification.id = 'language-notification';
+    notification.className = 'fixed top-4 right-4 z-50 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg shadow-2xl border border-orange-400 transform translate-x-full transition-transform duration-500 ease-out';
     
+    const currentLang = this.currentLanguage === 'en' ? 'English' : 'Bahasa Melayu';
+    notification.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.41 12m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0m2.41 0a18.022 18.022 0 006.41 0M9 12l-3-3m3 3l3-3m3 3l-3 3"></path>
+        </svg>
+        <span class="font-semibold">Language changed to ${currentLang}</span>
+      </div>
+    `;
+
+    document.body.appendChild(notification);
+
     // Animate in
     setTimeout(() => {
       notification.classList.remove('translate-x-full');
     }, 100);
-    
-    // Animate out and remove
+
+    // Auto-remove after 3 seconds
     setTimeout(() => {
       notification.classList.add('translate-x-full');
       setTimeout(() => {
         if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
+          notification.remove();
         }
-      }, 300);
-    }, 2000);
+      }, 500);
+    }, 3000);
   }
 
   // Set language and update all text content
@@ -348,25 +391,78 @@ class LocalizationManager {
   updateMetaTags() {
     const langPack = this.translations[this.currentLanguage] || this.translations.en;
     
-    // Update hreflang tags
-    let hreflangEn = document.querySelector('link[hreflang="en"]');
-    let hreflangMs = document.querySelector('link[hreflang="ms-MY"]');
-    
-    if (!hreflangEn) {
-      hreflangEn = document.createElement('link');
-      hreflangEn.rel = 'alternate';
-      hreflangEn.hreflang = 'en';
-      hreflangEn.href = window.location.href;
-      document.head.appendChild(hreflangEn);
+    // Update page title
+    if (langPack.pageTitle) {
+      document.title = langPack.pageTitle;
     }
     
-    if (!hreflangMs) {
-      hreflangMs = document.createElement('link');
-      hreflangMs.rel = 'alternate';
-      hreflangMs.hreflang = 'ms-MY';
-      hreflangMs.href = window.location.href;
-      document.head.appendChild(hreflangMs);
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && langPack.pageDescription) {
+      metaDesc.content = langPack.pageDescription;
     }
+    
+    // Update meta keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords && langPack.pageKeywords) {
+      metaKeywords.content = langPack.pageKeywords;
+    }
+    
+    // Update Open Graph title
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && langPack.pageTitle) {
+      ogTitle.content = langPack.pageTitle;
+    }
+    
+    // Update Open Graph description
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && langPack.pageDescription) {
+      ogDesc.content = langPack.pageDescription;
+    }
+    
+    // Update Twitter title
+    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twitterTitle && langPack.pageTitle) {
+      twitterTitle.content = langPack.pageTitle;
+    }
+    
+    // Update Twitter description
+    const twitterDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twitterDesc && langPack.pageDescription) {
+      twitterDesc.content = langPack.pageDescription;
+    }
+    
+    // Add language indicator to header
+    this.updateLanguageIndicator();
+  }
+  
+  // Add visual language indicator to header
+  updateLanguageIndicator() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    
+    // Remove existing indicator
+    const existingIndicator = document.getElementById('language-indicator');
+    if (existingIndicator) {
+      existingIndicator.remove();
+    }
+    
+    const currentLang = this.currentLanguage === 'en' ? 'EN' : 'MS';
+    const langName = this.currentLanguage === 'en' ? 'English' : 'Bahasa Melayu';
+    
+    const indicator = document.createElement('div');
+    indicator.id = 'language-indicator';
+    indicator.className = 'absolute top-2 right-2 md:top-4 md:right-4 z-10';
+    indicator.innerHTML = `
+      <div class="flex items-center space-x-2 bg-slate-800/80 backdrop-blur-sm border border-slate-600 rounded-full px-3 py-1 text-xs text-slate-300">
+        <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+        <span class="font-medium">${currentLang}</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-slate-400">${langName}</span>
+      </div>
+    `;
+    
+    header.appendChild(indicator);
   }
 
   // Get current language
@@ -427,7 +523,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const langManager = new LocalizationManager();
         window.langManager = langManager;
       } else {
-        console.error('Translations not loaded');
+        console.error('Translations not loaded after retry');
+        // Fallback: create a basic manager with empty translations
+        window.translations = { en: {}, ms: {} };
+        const langManager = new LocalizationManager();
+        window.langManager = langManager;
       }
     }, 100);
   }

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outline VPN | Fast & Secure Internet in Malaysia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --secondary: #1e3a8a;
+            --success: #10b981;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(31, 41, 55, 0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes count-up {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--success), #f59e0b);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        .glass-effect {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-green {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .slide-up-animate {
+            animation: slide-up 0.8s ease-out forwards;
+        }
+
+        .count-animate {
+            animation: count-up 0.6s ease-out forwards;
+        }
+
+        /* Interactive elements */
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 60px rgba(249, 115, 22, 0.2);
+        }
+
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Speed test animation */
+        .speed-meter {
+            width: 120px;
+            height: 120px;
+            border: 8px solid rgba(249, 115, 22, 0.2);
+            border-top: 8px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--primary));
+            border-radius: 3px;
+            animation: progress-fill 3s ease-in-out infinite;
+        }
+
+        @keyframes progress-fill {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: particle-float 8s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Real-time status indicator */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300">
+
+    <!-- Floating particles -->
+    <div class="particle w-2 h-2 bg-orange-400" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle w-3 h-3 bg-blue-400" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle w-1 h-1 bg-green-400" style="left: 70%; animation-delay: 4s;"></div>
+    <div class="particle w-2 h-2 bg-purple-400" style="left: 85%; animation-delay: 6s;"></div>
+
+    <!-- Enhanced Header -->
+    <header class="glass-effect sticky top-0 z-50 border-b border-gray-700/30">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="text-2xl font-bold text-white flex items-center">
+                    <span class="text-orange-500">Outline</span><span>VPN</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span class="text-green-300 text-sm">99.9% Uptime</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="hover:text-orange-400 transition-colors font-medium">Features</a>
+                <a href="#setup" class="hover:text-orange-400 transition-colors font-medium">Setup</a>
+                <a href="#pricing" class="hover:text-orange-400 transition-colors font-medium">Pricing</a>
+                <a href="#faq" class="hover:text-orange-400 transition-colors font-medium">FAQ</a>
+                <div class="flex items-center space-x-2 text-sm">
+                    <span class="w-2 h-2 bg-green-400 rounded-full pulse-green"></span>
+                    <span class="text-green-300" id="online-users">2,847 users online</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#pricing" class="cta-button bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold py-2 px-6 rounded-full">Get Started</a>
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <main class="relative overflow-hidden">
+        <section class="container mx-auto px-6 py-24 text-center relative z-10">
+            <!-- Speed Test Widget -->
+            <div class="absolute top-10 right-10 hidden lg:block">
+                <div class="glass-effect rounded-2xl p-6 text-center">
+                    <div class="speed-meter mx-auto mb-4"></div>
+                    <div class="text-2xl font-bold text-orange-400 mb-2" id="speed-display">950</div>
+                    <div class="text-sm text-slate-400">Mbps Available</div>
+                    <div class="progress-bar mt-4">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time server status -->
+            <div class="inline-flex items-center space-x-3 glass-effect rounded-full px-6 py-3 mb-8">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 bg-green-400 rounded-full pulse-green"></span>
+                    <span class="text-green-300 font-semibold">🇲🇾 Malaysia Server</span>
+                </div>
+                <div class="w-px h-4 bg-gray-600"></div>
+                <div class="text-sm text-slate-300">
+                    <span id="server-load" class="text-green-400 font-semibold">23%</span> Load
+                </div>
+                <div class="w-px h-4 bg-gray-600"></div>
+                <div class="text-sm text-slate-300">
+                    <span id="ping-time" class="text-green-400 font-semibold">8ms</span> Ping
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6 slide-up-animate">
+                Unlimited Internet,<br>
+                <span class="gradient-bg bg-clip-text text-transparent">Lightning Speed</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-8 slide-up-animate" style="animation-delay: 0.2s;">
+                Premium Malaysia VPN with <strong class="text-orange-400">AES-256 encryption</strong>, 
+                no-logs policy, and speeds up to <strong class="text-green-400">950 Mbps</strong>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 slide-up-animate" style="animation-delay: 0.4s;">
+                <a href="#pricing" class="cta-button bg-gradient-to-r from-orange-600 to-red-500 text-white font-bold py-4 px-8 text-lg rounded-full shadow-2xl">
+                    Start Now - Only RM15/month
+                </a>
+                <a href="#features" class="cta-button border-2 border-orange-500 text-orange-400 font-bold py-4 px-8 text-lg rounded-full hover:bg-orange-500/10 transition-all">
+                    See Features
+                </a>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="flex flex-wrap justify-center items-center gap-6 text-slate-400 slide-up-animate" style="animation-delay: 0.6s;">
+                <div class="flex items-center space-x-2 glass-effect rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="font-semibold">No-Logs Policy</span>
+                </div>
+                <div class="flex items-center space-x-2 glass-effect rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    <span class="font-semibold">AES-256 Encryption</span>
+                </div>
+                <div class="flex items-center space-x-2 glass-effect rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span class="font-semibold">Instant Activation</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floating VPN icons -->
+        <div class="absolute top-20 left-10 floating-icon opacity-20">
+            <svg class="w-16 h-16 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+        </div>
+        <div class="absolute bottom-20 right-20 floating-icon opacity-20" style="animation-delay: 2s;">
+            <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+            </svg>
+        </div>
+    </main>
+
+    <!-- Enhanced Stats Section -->
+    <section class="py-20 bg-gradient-to-r from-slate-800/50 to-slate-900/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="glass-effect rounded-2xl p-8 feature-card">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-orange-400 floating-icon">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-5xl font-black gradient-bg bg-clip-text text-transparent count-animate" data-target="950">0</div>
+                    <p class="text-slate-400 mt-2 font-semibold">Mbps Speed</p>
+                    <div class="progress-bar mt-4 mx-auto" style="width: 80%;">
+                        <div class="progress-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 feature-card" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-green-400 floating-icon">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-5xl font-black gradient-bg bg-clip-text text-transparent count-animate" data-target="99.9">0</div>
+                    <p class="text-slate-400 mt-2 font-semibold">% Uptime</p>
+                    <p class="text-xs text-green-400 mt-2">SLA Guaranteed</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 feature-card" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-blue-400 floating-icon">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-5xl font-black gradient-bg bg-clip-text text-transparent">24</div>
+                    <p class="text-slate-400 mt-2 font-semibold">Hour Support</p>
+                    <p class="text-xs text-blue-400 mt-2">Response < 1hr</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 feature-card" style="animation-delay: 0.3s;">
+                    <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-purple-400 floating-icon">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-5xl font-black gradient-bg bg-clip-text text-transparent">∞</div>
+                    <p class="text-slate-400 mt-2 font-semibold">Device Limit</p>
+                    <p class="text-xs text-purple-400 mt-2">One key, all devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Pricing Section -->
+    <section id="pricing" class="py-24 bg-slate-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-slate-400">No hidden fees. No setup costs. Just fast, secure internet.</p>
+            </div>
+            
+            <div class="max-w-lg mx-auto">
+                <div class="glass-effect rounded-3xl p-8 border-2 border-orange-500/50 relative overflow-hidden">
+                    <!-- Popular badge -->
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-bl-2xl font-bold text-sm">
+                        Most Popular
+                    </div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-white mb-4">Premium VPN Access</h3>
+                        <div class="flex items-baseline justify-center mb-4">
+                            <span class="text-6xl font-black gradient-bg bg-clip-text text-transparent">RM15</span>
+                            <span class="text-xl text-slate-400 ml-2">/month</span>
+                        </div>
+                        <p class="text-slate-400">Everything you need for secure browsing</p>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Unlimited bandwidth & data</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Malaysia servers (Low ping)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Connect unlimited devices</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">24/7 support via Shopee</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-slate-300">Instant key delivery (5-10 min)</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a href="#" class="cta-button w-full bg-gradient-to-r from-orange-600 to-red-500 text-white font-bold py-4 px-6 rounded-2xl text-center block text-lg shadow-2xl">
+                            Buy Now on Shopee
+                        </a>
+                        <a href="#" class="w-full border-2 border-orange-500/50 text-orange-400 font-semibold py-3 px-6 rounded-2xl text-center block hover:bg-orange-500/10 transition-all">
+                            Already bought? Redeem key →
+                        </a>
+                    </div>
+
+                    <div class="text-center mt-6 pt-6 border-t border-gray-700">
+                        <div class="flex items-center justify-center space-x-2 text-sm text-slate-400">
+                            <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Join <strong class="text-white">2,847+</strong> satisfied customers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">
+                        <span class="text-orange-500">Outline</span>VPN
+                    </h3>
+                    <p class="text-slate-400 mb-6">Fast, secure, and private internet for everyone in Malaysia.</p>
+                    <div class="flex items-center space-x-2 text-sm text-green-400">
+                        <span class="w-2 h-2 bg-green-400 rounded-full pulse-green"></span>
+                        <span>All systems operational</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Product</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#features" class="hover:text-orange-400 transition-colors">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-orange-400 transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Server Status</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Contact Us</a></li>
+                        <li><a href="#faq" class="hover:text-orange-400 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Shopee Store</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500">
+                <p>&copy; 2025 Outline VPN Services. All Rights Reserved.</p>
+                <p class="text-sm mt-2">Please use our services responsibly and comply with Malaysian laws.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Real-time updates simulation
+        function updateRealTimeStats() {
+            // Update online users count
+            const usersElement = document.getElementById('online-users');
+            if (usersElement) {
+                const baseUsers = 2800;
+                const randomUsers = Math.floor(Math.random() * 100);
+                usersElement.textContent = `${baseUsers + randomUsers} users online`;
+            }
+
+            // Update server load
+            const loadElement = document.getElementById('server-load');
+            if (loadElement) {
+                const load = Math.floor(Math.random() * 30) + 15; // 15-45%
+                loadElement.textContent = `${load}%`;
+                loadElement.className = load < 30 ? 'text-green-400 font-semibold' : 
+                                       load < 50 ? 'text-yellow-400 font-semibold' : 
+                                       'text-red-400 font-semibold';
+            }
+
+            // Update ping time
+            const pingElement = document.getElementById('ping-time');
+            if (pingElement) {
+                const ping = Math.floor(Math.random() * 10) + 5; // 5-15ms
+                pingElement.textContent = `${ping}ms`;
+            }
+
+            // Update speed display
+            const speedElement = document.getElementById('speed-display');
+            if (speedElement) {
+                const speed = Math.floor(Math.random() * 50) + 900; // 900-950 Mbps
+                speedElement.textContent = speed;
+            }
+        }
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-target]');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target % 1 === 0 ? target : target.toFixed(1);
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-up-animate');
+                        
+                        // Trigger counter animation if it has data-target
+                        if (entry.target.hasAttribute('data-target')) {
+                            setTimeout(() => {
+                                animateCounters();
+                            }, 200);
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+
+            document.querySelectorAll('.feature-card, [data-target]').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Generate random floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const colors = ['bg-orange-400', 'bg-blue-400', 'bg-green-400', 'bg-purple-400'];
+            const sizes = ['w-1 h-1', 'w-2 h-2', 'w-3 h-3'];
+            
+            particle.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+            particle.classList.add(...sizes[Math.floor(Math.random() * sizes.length)].split(' '));
+            
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            
+            document.body.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 12000);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.md\\:hidden');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-lg flex items-center justify-center hidden';
+        mobileMenu.innerHTML = `
+            <div class="text-center space-y-8">
+                <button class="absolute top-6 right-6 text-white text-2xl">&times;</button>
+                <nav class="space-y-6">
+                    <a href="#features" class="block text-2xl text-white hover:text-orange-400 transition-colors">Features</a>
+                    <a href="#setup" class="block text-2xl text-white hover:text-orange-400 transition-colors">Setup</a>
+                    <a href="#pricing" class="block text-2xl text-white hover:text-orange-400 transition-colors">Pricing</a>
+                    <a href="#faq" class="block text-2xl text-white hover:text-orange-400 transition-colors">FAQ</a>
+                </nav>
+                <a href="#pricing" class="inline-block cta-button bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold py-3 px-8 rounded-full">Get Started</a>
+            </div>
+        `;
+        
+        document.body.appendChild(mobileMenu);
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+        }
+        
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu || e.target.textContent === '×') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start real-time updates
+            updateRealTimeStats();
+            setInterval(updateRealTimeStats, 5000); // Update every 5 seconds
+            
+            // Initialize intersection observer
+            observeElements();
+            
+            // Create particles periodically
+            setInterval(createParticle, 3000);
+            
+            // Add some initial particles
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createParticle, i * 1000);
+            }
+        });
+
+        // Performance optimization: Reduce animations on slow devices
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.documentElement.style.setProperty('--animation-duration', '0.2s');
+        }
+    </script>
+</body>
+</html>

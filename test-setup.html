@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Section Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .scroll-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-animate.is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #f97316;
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-6 py-24">
+        <!-- Enhanced Setup Section -->
+        <section id="setup" class="py-24 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white">Easy Setup in 3 Steps</h2>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Very fast and easy to get started.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center scroll-animate">
+                        <div class="flex items-center justify-center w-24 h-24 bg-orange-500 rounded-full text-white text-4xl font-bold mb-6 border-4 border-orange-600 shadow-lg">1</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Buy & Receive Key</h3>
+                        <p class="text-slate-400 px-4">Choose your plan on Shopee. After payment, we will send an 'access key' (starting with 'ss://') via Shopee Chat.</p>
+                        <a href="https://fisamy.rhinopal.top/" class="mt-6 cta-button">Redeem Your Key</a>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center scroll-animate" style="animation-delay: 0.2s;">
+                        <div class="flex items-center justify-center w-24 h-24 bg-orange-500 rounded-full text-white text-4xl font-bold mb-6 border-4 border-orange-600 shadow-lg">2</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Download Outline App</h3>
+                        <p class="text-slate-400 px-4">Download the 'Outline Client' app for your device. Click the link below or scan the QR code.</p>
+                        <div class="mt-6 space-y-4">
+                            <a href="https://s3.amazonaws.com/outline-releases/client/windows/stable/Outline-Client.exe" class="cta-button bg-blue-600 hover:bg-blue-500 w-full block">Windows</a>
+                            <a href="https://s3.amazonaws.com/outline-releases/client/macos/stable/Outline-Client.dmg" class="cta-button bg-gray-600 hover:bg-gray-500 w-full block">macOS</a>
+                            <a href="https://play.google.com/store/apps/details?id=org.outline.android.client" class="cta-button bg-green-600 hover:bg-green-500 w-full block">Android</a>
+                            <a href="https://itunes.apple.com/us/app/outline-app/id1356177741" class="cta-button bg-purple-600 hover:bg-purple-500 w-full block">iOS</a>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center scroll-animate" style="animation-delay: 0.4s;">
+                        <div class="flex items-center justify-center w-24 h-24 bg-orange-500 rounded-full text-white text-4xl font-bold mb-6 border-4 border-orange-600 shadow-lg">3</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Connect & Browse</h3>
+                        <p class="text-slate-400 px-4">Open the Outline app, click the '+' icon and paste your 'access key'. Press 'Connect' and you're ready to browse the internet safely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Simple test to ensure setup section is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Setup section test loaded');
+            const setupSection = document.getElementById('setup');
+            if (setupSection) {
+                console.log('Setup section found:', setupSection);
+                const steps = setupSection.querySelectorAll('.scroll-animate');
+                console.log('Found steps:', steps.length);
+                steps.forEach((step, index) => {
+                    console.log(`Step ${index + 1}:`, step);
+                    step.classList.add('is-visible');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
